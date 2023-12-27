@@ -22,8 +22,16 @@ export function Players({
               &times;
             </span>
             <h2>Set Player Names</h2>
-            <input type="text" placeholder="Player 1" onChange={namedPlayer1} />
-            <input type="text" placeholder="Player 2" onChange={namedPlayer2} />
+            <input
+              type="text"
+              placeholder="Player 1 (X)"
+              onChange={namedPlayer1}
+            />
+            <input
+              type="text"
+              placeholder="Player 2 (O)"
+              onChange={namedPlayer2}
+            />
             <Reset
               namesComplete={namesComplete}
               gameState={gameState}
