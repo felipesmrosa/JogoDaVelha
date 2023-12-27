@@ -66,6 +66,16 @@ export function TicTacToe() {
   const [gameState, setGameState] = useState(GameState.chooseName);
   const [namesComplete, setNamesComplete] = useState(false);
 
+  const [showModal, setShowModal] = useState(true);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   function namedPlayer1(e) {
     setPlayer1(e.target.value);
     setNamesComplete(!!e.target.value && !!player2);
@@ -84,25 +94,14 @@ export function TicTacToe() {
   }
 
   const handleTileClick = (index) => {
-    if (gameState !== GameState.inProgress) {
-      return;
-    }
-    if (tiles[index] !== null) {
-      return;
-    }
-
-    if (tiles[index] !== null) {
+    if (gameState !== GameState.inProgress || tiles[index] !== null) {
       return;
     }
 
     const newTiles = [...tiles];
     newTiles[index] = playerTurn;
     setTiles(newTiles);
-    if (playerTurn === PLAYER_X) {
-      setPlayerTurn(PLAYER_O);
-    } else {
-      setPlayerTurn(PLAYER_X);
-    }
+    setPlayerTurn(playerTurn === PLAYER_X ? PLAYER_O : PLAYER_X);
   };
 
   const handleReset = () => {
@@ -110,6 +109,7 @@ export function TicTacToe() {
     setTiles(Array(9).fill(null));
     setPlayerTurn(PLAYER_X);
     setStrikeClass(null);
+    closeModal();
   };
 
   useEffect(() => {
@@ -127,7 +127,6 @@ export function TicTacToe() {
       gameOverSound.play();
     }
   }, [gameState]);
-
   return (
     <div className="containerTotal">
       <h1>Jogo da Velha</h1>
@@ -137,6 +136,12 @@ export function TicTacToe() {
         player2={player2}
         namedPlayer1={namedPlayer1}
         namedPlayer2={namedPlayer2}
+        openModal={openModal}
+        showModal={showModal}
+        closeModal={closeModal}
+        namesComplete={namesComplete}
+        gameState={gameState}
+        handleReset={handleReset}
       />
       <Board
         strikeClass={strikeClass}
@@ -144,11 +149,11 @@ export function TicTacToe() {
         tiles={tiles}
         onTileClick={handleTileClick}
       />
-      <GameOver player1={player1} player2={player2} gameState={gameState} />
-      <Reset
-        namesComplete={namesComplete}
-        gameState={gameState}
+      <GameOver
         handleReset={handleReset}
+        player1={player1}
+        player2={player2}
+        gameState={gameState}
       />
     </div>
   );

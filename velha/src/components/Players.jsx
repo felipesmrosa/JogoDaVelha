@@ -1,29 +1,37 @@
+import { Reset } from "./Reset";
+
 export function Players({
-  player1,
-  player2,
   namedPlayer1,
   namedPlayer2,
-  resetNames,
+  openModal,
+  showModal,
+  closeModal,
+  namesComplete,
+  gameState,
+  handleReset,
 }) {
   return (
     <div className="players">
-      <label htmlFor="">Player 01</label>
-      <input
-        type="text"
-        placeholder="Nome do Player 01"
-        value={player1}
-        onChange={namedPlayer1}
-        autoComplete="off"
-      />
-      <label htmlFor="">Player 02</label>
-      <input
-        type="text"
-        placeholder="Nome do Player 02"
-        value={player2}
-        onChange={namedPlayer2}
-        autoComplete="off"
-      />
-      <button className="resetName" onClick={resetNames}>Trocar Nomes</button>
+      <button className="resetName" onClick={openModal}>
+        Trocar Nomes
+      </button>
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <h2>Set Player Names</h2>
+            <input type="text" placeholder="Player 1" onChange={namedPlayer1} />
+            <input type="text" placeholder="Player 2" onChange={namedPlayer2} />
+            <Reset
+              namesComplete={namesComplete}
+              gameState={gameState}
+              handleReset={handleReset}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

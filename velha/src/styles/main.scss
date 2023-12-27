@@ -17,7 +17,7 @@
 @import "./imports/players";
 
 .containerTotal {
-  margin-top: 3rem;
+  margin-top: 14rem;
 }
 
 .board {
@@ -37,11 +37,73 @@
   align-items: center;
 }
 
-.game-over {
+.game__over {
   text-align: center;
-  border: #5468ff 8px;
-  border-style: dotted;
   padding: 10px;
-  margin-top: 50px;
   font-size: 1.5em;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__modal {
+    width: 30%;
+    padding: 3rem;
+    background: #23272f;
+    border-radius: 6px;
+  }
+}
+
+.modal {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #31363f;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.close {
+  cursor: pointer;
+  margin-bottom: 1.8rem;
+  color: #f44336;
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  font-size: 4rem;
+}
+
+input {
+  margin-top: 1rem;
+}
+
+button {
+  margin-top: 0.8rem;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
