@@ -1,3 +1,3 @@
-export function Strike() {
-  return <div></div>;
+export function Strike({ strikeClass }) {
+  return <div className={`strike ${strikeClass}`}></div>;
 }

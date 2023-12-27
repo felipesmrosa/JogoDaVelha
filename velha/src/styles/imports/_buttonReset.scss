@@ -1,0 +1,14 @@
+@import "../global";
+
+.reset-button {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #0074a6;
+  color: white;
+  width: 100%;
+  font-size: 1.5em;
+}
+.reset-button.disabled {
+  cursor: no-drop;
+  opacity: 0.5;
+}

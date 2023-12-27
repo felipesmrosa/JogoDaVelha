@@ -4,12 +4,29 @@
 // Import Borders Tiles
 @import "./imports/border";
 
+// Import Strikes
+@import "./imports/strike";
+
+// Import Hover
+@import "./imports/hover";
+
+// Import Button Reset Game
+@import "./imports/buttonReset";
+
+// Imort Players
+@import "./imports/players";
+
+.containerTotal {
+  margin-top: 3rem;
+}
+
 .board {
   display: grid;
   grid-template-columns: 100px 100px 100px;
   grid-template-rows: 100px 100px 100px;
   cursor: pointer;
   position: relative;
+  margin-top: 1.5rem;
 }
 
 .tile {
@@ -18,4 +35,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.game-over {
+  text-align: center;
+  border: #5468ff 8px;
+  border-style: dotted;
+  padding: 10px;
+  margin-top: 50px;
+  font-size: 1.5em;
 }
